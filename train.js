@@ -36,3 +36,17 @@
              console.log(newTrain.destination);
              console.log(newTrain.firstTrainTime);
              console.log(newTrain.trainFrequency);
+
+             //Create Firebase event for adding train to the database and a row in the html when a user adds an entry
+             database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+
+                         console.log(childSnapshot.val());
+                         // console.log(prevChildKey);
+
+                         // Store everything into a variable.
+                         var trainName = childSnapshot.val().name;
+                         var destination = childSnapshot.val().destination;
+                         var firstTrainTime = childSnapshot.val().firstTrainTime;
+                         var trainFrequency = childSnapshot.val().trainFrequency;
+
+                         console.log(firstTrainTime);
